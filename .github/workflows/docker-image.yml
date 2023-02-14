@@ -19,7 +19,6 @@ jobs:
         git --version
         git config user.name 'byterui'
         git config user.email 'shirui_yj133@163.com'
+        docker compose build
       env:
         NODE_AUTH_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
-    - name: Build the Docker image
-      run: docker compose build
