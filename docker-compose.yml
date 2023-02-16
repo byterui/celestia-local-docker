@@ -160,7 +160,7 @@ services:
         max-size: "200k"
         max-file: "10"
     volumes:
-      - celestia-app-data:${APP_HOME_DIR}
+      - ./celestia-app-data:${APP_HOME_DIR}
     networks:
       - celestialocal
     environment:
@@ -200,8 +200,8 @@ services:
         max-size: "200k"
         max-file: "10"
     volumes:
-      - celestia-node-data:/data
-      - celestia-app-data:/data/apphome
+      - ./celestia-node-data:/data
+      - ./celestia-app-data:/data/apphome
     networks:
       - celestialocal
     entrypoint: "tail -f /dev/null"
@@ -229,6 +229,8 @@ services:
     restart: always
     security_opt:
       - "seccomp:unconfined"
+    depend_on:
+      - celestia-app  
 
   #----------------#
 
@@ -249,8 +251,8 @@ services:
         max-size: "200k"
         max-file: "10"
     volumes:
-      - celestia-node-data:/data
-      - celestia-app-data:/data/apphome
+      - ./celestia-node-data:/data
+      - ./celestia-app-data:/data/apphome
     networks:
       - celestialocal
     environment:
@@ -277,6 +279,8 @@ services:
     restart: always
     security_opt:
       - "seccomp:unconfined"
+    depend_on:
+      - celestia-app      
 
 
   #----------------#

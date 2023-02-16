@@ -1,5 +1,9 @@
-FROM golang:alpine AS development
+FROM golang:1.19-alpine AS development
 ARG arch=x86_64
+
+RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositories
+
+ENV GOPROXY=https://goproxy.cn,direct
 
 # ENV CGO_ENABLED=0
 
