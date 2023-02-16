@@ -53,13 +53,13 @@ ${BIN_PATH} ${NODE_TYPE} start --core.ip ${CORE_IP} --core.grpc.port ${CORE_GRPC
 # ./celestia light start --gateway --gateway.addr celestia-light --gateway.port 26659 --p2p.network arabica --metrics.tls=false --metrics --metrics.endpoint otel-collector:4318 
 
 
-GENESIS_HASH=$(curl http://localhost:26657/block?height=1 | jq .result.block_id.hash | xargs)
-export CELESTIA_CUSTOM=private:${GENESIS_HASH}
-./build/celestia bridge init --p2p.network private --metrics.tls=false --metrics --metrics.endpoint localhost:4318 --core.ip localhost --core.grpc.port 9092
-./build/celestia bridge start --p2p.network private --metrics.tls=false --metrics --metrics.endpoint localhost:4318 --core.ip localhost --core.grpc.port 9092
+# GENESIS_HASH=$(curl http://localhost:26657/block?height=1 | jq .result.block_id.hash | xargs)
+# export CELESTIA_CUSTOM=private:${GENESIS_HASH}
+# ./build/celestia bridge init --p2p.network private --metrics.tls=false --metrics --metrics.endpoint localhost:4318 --core.ip localhost --core.grpc.port 9092
+# ./build/celestia bridge start --p2p.network private --metrics.tls=false --metrics --metrics.endpoint localhost:4318 --core.ip localhost --core.grpc.port 9092
 
-./build/celestia bridge init --p2p.network arabica --metrics.tls=false --metrics --metrics.endpoint localhost:4318 --core.ip https://kaarina.celestia-devops.dev --core.grpc.port 9090
-./build/celestia bridge start --p2p.network arabica --metrics.tls=false --metrics --metrics.endpoint localhost:4318 --core.ip https://kaarina.celestia-devops.dev --core.grpc.port 9090
+# ./build/celestia bridge init --p2p.network arabica --metrics.tls=false --metrics --metrics.endpoint localhost:4318 --core.ip https://kaarina.celestia-devops.dev --core.grpc.port 9090
+# ./build/celestia bridge start --p2p.network arabica --metrics.tls=false --metrics --metrics.endpoint localhost:4318 --core.ip https://kaarina.celestia-devops.dev --core.grpc.port 9090
 
-./build/celestia light init --p2p.network arabica --metrics.tls=false --metrics --metrics.endpoint localhost:4318 --core.ip https://grpc.limani.celestia-devops.dev --core.grpc.port 9090
-./build/celestia light start --p2p.network arabica --metrics.tls=false --metrics --metrics.endpoint localhost:4318 --core.ip https://grpc.limani.celestia-devops.dev --core.grpc.port 9090
+# ./build/celestia light init --p2p.network arabica --metrics.tls=false --metrics --metrics.endpoint localhost:4318 --core.ip https://grpc.limani.celestia-devops.dev --core.grpc.port 9090
+# ./build/celestia light start --p2p.network arabica --metrics.tls=false --metrics --metrics.endpoint localhost:4318 --core.ip https://grpc.limani.celestia-devops.dev --core.grpc.port 9090

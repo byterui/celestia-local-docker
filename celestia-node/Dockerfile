@@ -1,11 +1,15 @@
-FROM golang:alpine AS development
+FROM golang:1.19-alpine AS development
 ARG arch=x86_64
+RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositories
 
+ARG APP_GIT_TAG
 # ENV CGO_ENABLED=0
 
 RUN set -eux; \
     apk add --no-cache \
     git \
+    vim \
+    tcpdump \
     openssh \
     bash \
     ca-certificates \
@@ -13,6 +17,8 @@ RUN set -eux; \
     && mkdir -p /build/ 
 
 ARG NODE_GIT_TAG
+
+ENV GOPROXY=https://goproxy.cn,direct
 
 # RUN git clone https://github.com/celestiaorg/celestia-node.git \
 #     && cd celestia-node \
@@ -22,9 +28,9 @@ ARG NODE_GIT_TAG
 #     && cp build/celestia /build/ \
 #     && cp cel-key /build/
 
-RUN git clone https://github.com/derrandz/celestia-node.git \
+RUN git clone https://github.com/celestiaorg/celestia-node.git \
     && cd celestia-node \
-    && git checkout 034f58cb757f43bcefa57076092dd489531e4185 \
+    && git checkout tags/${NODE_GIT_TAG} \
     && make build \
     && make cel-key \
     && cp build/celestia /build/ \

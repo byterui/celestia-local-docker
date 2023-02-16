@@ -21,9 +21,9 @@ if ! [ -f "${APP_HOME_DIR}/config/genesis.json" ]; then
     --keyring-backend="${KEYRING_BACKEND}" \
     --chain-id ${CHAINID} \
     --home ${APP_HOME_DIR} \
-    --orchestrator-address $(${BIN_PATH} keys show ${VALIDATOR_KEY} -a --keyring-backend="${KEYRING_BACKEND}" --home ${APP_HOME_DIR}) \
     --evm-address 0x966e6f22781EF6a6A82BBB4DB3df8E225DfD9488 # private key: da6ed55cb2894ac2c9c10209c09de8e8b9d109b910338d5bf3d747a7e1fc9eb9
     # --ethereum-address 0x966e6f22781EF6a6A82BBB4DB3df8E225DfD9488 # private key: da6ed55cb2894ac2c9c10209c09de8e8b9d109b910338d5bf3d747a7e1fc9eb9
+    # --orchestrator-address $(${BIN_PATH} keys show ${VALIDATOR_KEY} -a --keyring-backend="${KEYRING_BACKEND}" --home ${APP_HOME_DIR}) 
 
   ${BIN_PATH} collect-gentxs --home ${APP_HOME_DIR}
 
